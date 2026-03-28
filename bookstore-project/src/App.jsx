@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GenreButtons from "./components/GenreButtons";
-// import BookList from "./components/BookList";
+import BookCard from "./components/BookCard";
+import BookList from "./components/BookList";
 
 
 export default function App() {
@@ -58,7 +59,9 @@ export default function App() {
           onClick={toggleChildren}
         />
       </div>
-      {/* <BookList books={bookData[selectedGenre]} /> */}
+        <BookList books={bookData["fiction"]} genre="Fiction" show={showFiction} />
+        <BookList books={bookData["non-fiction"]} genre="Non-Fiction" show={showNonFiction} />
+        <BookList books={bookData["children"]} genre="Children" show={showChildren} />
     </div>
   );
 }

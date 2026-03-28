@@ -1,7 +1,7 @@
 export default function BookCard ({ title, author, price }) {
     return (
         <div>
-            <p>{title}, {author}, ${price}</p>
+            <p><em>{title}</em>, {author}, ${price}</p>
         </div>
     )
 }
