@@ -3,10 +3,11 @@ import React, { useState } from "react";
 export default function Question({ question }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const allAnswers = [
-    question.correctAnswer,
-    ...question.incorrectAnswers,
-  ].sort(() => Math.random() - 0.5);
+  const [allAnswers] = useState(() =>
+    [question.correctAnswer, ...question.incorrectAnswers].sort(
+      () => Math.random() - 0.5
+    )
+  );
 
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
@@ -19,19 +20,16 @@ export default function Question({ question }) {
         {allAnswers.map((answer, index) => (
           <button
             key={index}
-            className={`answer-btn ${
-              selectedAnswer === answer ? "selected" : ""
-            } ${
-              selectedAnswer === answer &&
-              answer === question.correctAnswer
+            className={`answer-btn ${selectedAnswer === answer ? "selected" : ""
+              } ${selectedAnswer === answer &&
+                answer === question.correctAnswer
                 ? "correct"
                 : ""
-            } ${
-              selectedAnswer === answer &&
-              answer !== question.correctAnswer
+              } ${selectedAnswer === answer &&
+                answer !== question.correctAnswer
                 ? "incorrect"
                 : ""
-            }`}
+              }`}
             onClick={() => handleAnswerClick(answer)}
             disabled={selectedAnswer !== null}
           >

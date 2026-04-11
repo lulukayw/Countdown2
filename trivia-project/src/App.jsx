@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getQuestions } from "./api/triviaApi";
 import Question from "./components/Question";
+import Button from '@mui/material/Button';
 
 export default function App() {
   const [questions, setQuestions] = useState([]);
@@ -19,9 +20,9 @@ export default function App() {
       <h1>Trivia Quiz</h1>
 
       {!isQuizStarted && (
-        <button onClick={loadQuestions}>
+        <Button variant="contained" onClick={loadQuestions}>
           Start Quiz
-        </button>
+        </Button>
       )}
 
       {isQuizStarted && questions.length > 0 && (
